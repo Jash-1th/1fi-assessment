@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom'; // 1. Import Link
+import { useParams, Link } from 'react-router-dom';
 import EmiOption from '../components/EmiOption';
 
 export default function ProductPage() {
@@ -13,7 +13,7 @@ export default function ProductPage() {
     const fetchProduct = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`http://localhost:5000/api/products/${slug}`);
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/products/${slug}`);
         if (!res.ok) {
           throw new Error('Product not found');
         }
@@ -43,6 +43,7 @@ export default function ProductPage() {
     return null;
   }
 
+  // Helper to get color class
   const getFinishColor = (finish) => {
     switch (finish.toLowerCase()) {
       case 'orange': return 'bg-orange-400';
@@ -58,7 +59,6 @@ export default function ProductPage() {
   };
 
   return (
- 
     <div className="min-h-screen w-full bg-gray-100 p-4 sm:p-8 flex items-center justify-center relative">
       
       <Link 
@@ -71,6 +71,7 @@ export default function ProductPage() {
       
       <div className="max-w-5xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 bg-white rounded-lg shadow-xl overflow-hidden mt-12 sm:mt-0">
 
+        {/* --- LEFT COLUMN --- */}
         <div className="p-6 sm:p-8 flex flex-col bg-gray-50">
           
           <div className="mb-4">
@@ -92,14 +93,12 @@ export default function ProductPage() {
             })()}
           </div>
           
-         
           <img
             src={product.image}
             alt={product.name}
             className="max-w-sm w-full object-contain my-8 mx-auto"
           />
           
-         
           <div className="self-start w-full mt-auto">
             <p className="text-gray-600 text-sm">Available in {product.finishes.length} finishes</p>
             <div className="flex space-x-2 mt-2">
@@ -117,7 +116,6 @@ export default function ProductPage() {
         {/* --- RIGHT COLUMN --- */}
         <div className="flex flex-col space-y-4 p-6 sm:p-8">
           
-          {/* Price Group */}
           <div className="flex items-baseline space-x-3">
             <span className="text-4xl font-extrabold text-gray-900">
               ₹{product.price.toLocaleString('en-IN')}

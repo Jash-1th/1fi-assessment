@@ -9,24 +9,25 @@ const app = express();
 
 
 const allowedOrigins = [
-  'https://if1-assessment.netlify.app',
-  'http://localhost:5173' 
+  process.env.FRONTEND_URL,   
+  process.env.LOCAL_FRONTEND_URL 
 ];
 
 const corsOptions = {
   origin: function (origin, callback) {
     
-    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+      return callback(new Error(msg), false);
     }
+    return callback(null, true);
   }
 };
 
-
 app.use(cors(corsOptions));
-// ----------------------------------------
+// ----------------------------------
 
 app.use(express.json());
 
