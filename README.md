@@ -1,3 +1,6 @@
+
+
+
 # 1Fi SDE1 Assignment - EMI Product Page
 
 This is a full-stack web application built for the 1Fi SDE1 assignment. It displays products with multiple EMI plans, retrieves data from a backend API, and presents it in a responsive web interface.
@@ -11,17 +14,9 @@ This is a full-stack web application built for the 1Fi SDE1 assignment. It displ
 
 ## 🎥 Video Demo
 
-**[PASTE YOUR GOOGLE DRIVE / YOUTUBE LINK HERE]**
+**https://drive.google.com/file/d/1hNG_BaSOstjboCK2r-xywE_HJxvQi9tV/view?usp=sharing**
 
-## ✨ Features
-
-* **Dynamic Product Data:** All product information is fetched live from a backend API.
-* **Dynamic EMI Plans:** All EMI plans are stored in and served from the database.
-* **Product Homepage:** A main page displays all available products in a responsive grid.
-* **Product Detail Page:** Each product has a unique URL (e.g., `/products/iphone-17-pro-256gb`).
-* **Interactive EMI Selection:** Users can select their preferred EMI plan on the detail page.
-* **Best Practices:** Uses environment variables for API URLs and CORS for security.
-* **Responsive Design:** The layout works on both desktop and mobile devices.
+---
 
 ## 💻 Tech Stack Used
 
@@ -63,6 +58,10 @@ node seed.js
 npm run dev
 
 
+> The backend server will be running at `http://localhost:5000`.
+
+### 2\. Frontend (Client)
+
 
 # From the root '1fi-assessment' folder, open a NEW terminal
 cd frontend
@@ -78,49 +77,51 @@ npm install
 npm run dev
 
 
-# Get All Products
-Endpoint: GET /api/products
+> The frontend app will be running at `http://localhost:5T3`.
 
-Description: Retrieves a list of all products (a simplified version for the homepage).
+-----
 
-Example Response:
+## 📝 API Endpoints and Example Responses
 
-JSON
+### Get All Products
 
-[
-  {
-    "_id": "6748c..._id_1",
-    "name": "iPhone 17 Pro 256GB",
-    "slug": "iphone-17-pro-256gb",
-    "price": 127400,
-    "image": "[https://images.pexels.com/](https://images.pexels.com/)..."
-  },
-  {
-    "_id": "6748c..._id_2",
-    "name": "Samsung S25 Ultra 512GB",
-    "slug": "samsung-s25-ultra-512gb",
-    "price": 142500,
-    "image": "[https://images.pexels.com/](https://images.pexels.com/)..."
-  }
-]
+  * **Endpoint:** `GET /api/products`
+  * **Description:** Retrieves a list of all products (a simplified version for the homepage).
+  * **Example Response:**
+    
+    [
+      {
+        "_id": "6748c..._id_1",
+        "name": "iPhone 17 Pro 256GB",
+        "slug": "iphone-17-pro-256gb",
+        "price": 127400,
+        "image": "[https://images.pexels.com/](https://images.pexels.com/)..."
+      },
+      {
+        "_id": "6748c..._id_2",
+        "name": "Samsung S25 Ultra 512GB",
+        "slug": "samsung-s25-ultra-512gb",
+        "price": 142500,
+        "image": "[https://images.pexels.com/](https://images.pexels.com/)..."
+      }
+    ]
+    
 
+### Get a Single Product by Slug
 
-## Get a Single Product by Slug
-Endpoint: GET /api/products/:slug
-
-Description: Retrieves all details for a single product using its unique slug.
-
-Example Response (/api/products/iphone-17-pro-256gb):
-
-{
-  "_id": "6748c..._id_1",
-  "name": "iPhone 17 Pro 256GB",
-  "slug": "iphone-17-pro-256gb",
-  "mrp": 134900,
-  "price": 127400,
-  "image": "[https://images.pexels.com/](https://images.pexels.com/)...",
-  "finishes": ["Orange", "Natural Titanium", "Blue Titanium"],
-  "emiPlans": [
+  * **Endpoint:** `GET /api/products/:slug`
+  * **Description:** Retrieves all details for a single product using its unique slug.
+  * **Example Response (`/api/products/iphone-17-pro-256gb`):**
+    
+    {
+      "_id": "6748c..._id_1",
+      "name": "iPhone 17 Pro 256GB",
+      "slug": "iphone-17-pro-256gb",
+      "mrp": 134900,
+      "price": 127400,
+      "image": "[https://images.pexels.com/](https://images.pexels.com/)...",
+      "finishes": ["Orange", "Natural Titanium", "Blue Titanium"],
+     "emiPlans": [
     {
       "tenure": 3,
       "monthlyPayment": 44967,
@@ -136,16 +137,18 @@ Example Response (/api/products/iphone-17-pro-256gb):
       "_id": "6748c..._plan_id_2"
     }
   ],
-  "createdAt": "2025-11-14T...",
-  "updatedAt": "2025-11-14T..."
-}
+      "createdAt": "2025-11-14T...",
+      "updatedAt": "2025-11-14T..."
+    }
+    ```
 
+-----
 
-## Database Schema Used
-Product Schema
-This collection stores all information related to a single product. The emiPlans are embedded as an array of sub-documents.
+## 🗃️ Database Schema Used
 
-JavaScript
+### `Product` Schema
+
+This collection stores all information related to a single product. The `emiPlans` are embedded as an array of sub-documents.
 
 import mongoose from 'mongoose';
 
@@ -171,3 +174,4 @@ const ProductSchema = new mongoose.Schema(
 
 const Product = mongoose.model('Product', ProductSchema);
 export default Product;
+
