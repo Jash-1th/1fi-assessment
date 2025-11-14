@@ -43,7 +43,6 @@ export default function ProductPage() {
     return null;
   }
 
-  // Helper to get color class
   const getFinishColor = (finish) => {
     switch (finish.toLowerCase()) {
       case 'orange': return 'bg-orange-400';
@@ -59,10 +58,9 @@ export default function ProductPage() {
   };
 
   return (
-    // 2. Add 'relative' to this wrapper
+ 
     <div className="min-h-screen w-full bg-gray-100 p-4 sm:p-8 flex items-center justify-center relative">
       
-      {/* 3. --- ADD THIS BACK BUTTON --- */}
       <Link 
         to="/" 
         className="absolute top-4 left-4 sm:top-8 sm:left-8 text-blue-600 hover:text-blue-800 transition-colors flex items-center group"
@@ -71,13 +69,10 @@ export default function ProductPage() {
         <span className="font-medium">Back to products</span>
       </Link>
       
-      {/* This is the main product card */}
       <div className="max-w-5xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 bg-white rounded-lg shadow-xl overflow-hidden mt-12 sm:mt-0">
 
-        {/* --- LEFT COLUMN --- */}
         <div className="p-6 sm:p-8 flex flex-col bg-gray-50">
           
-          {/* Product Title Group */}
           <div className="mb-4">
             <span className="text-sm font-semibold text-blue-600 bg-blue-100 px-3 py-1 rounded-full">
               NEW
@@ -97,14 +92,14 @@ export default function ProductPage() {
             })()}
           </div>
           
-          {/* Image */}
+         
           <img
             src={product.image}
             alt={product.name}
             className="max-w-sm w-full object-contain my-8 mx-auto"
           />
           
-          {/* Finishes */}
+         
           <div className="self-start w-full mt-auto">
             <p className="text-gray-600 text-sm">Available in {product.finishes.length} finishes</p>
             <div className="flex space-x-2 mt-2">
