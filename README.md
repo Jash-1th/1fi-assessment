@@ -29,15 +29,12 @@ Start app: npm run dev → http://localhost:5173
 ## API Endpoints:  
 GET /api/products → returns product list  
 Example:  
-[ { "_id": "6748...1", "name": "iPhone 17 Pro 256GB", "slug": "iphone-17-pro-256gb", "price": 127400, "image": "https://images.pexels.com/..." } ]
+<img width="438" height="300" alt="image" src="https://github.com/user-attachments/assets/027cd666-5dd2-4692-be2c-ee7c798efb6a" />
+
 
 GET /api/products/:slug → returns product details  
-Example:  
-{"_id":{"$oid":"6916d089a2ee4e0ba2a6a09c"},
-"name":"Samsung S25 Ultra 512GB","slug":"samsung-s25-ultra-512gb","mrp":{"$numberInt":"149999"},"price":{"$numberInt":"142500"},
-"image":"https://images.pexels.com/photos/1092644/pexels-photo-1092644.jpeg","finishes":["Grey","Black","Violet"],
-"emiPlans":[{"tenure":{"$numberInt":"3"},"monthlyPayment":{"$numberInt":"47500"},
-"interest":{"$numberInt":"0"},"cashback":{"$numberInt":"5000"},"_id":{"$oid":"6916d089a2ee4e0ba2a6a09d"}},{"tenure":{"$numberInt":"6"},"monthlyPayment":{"$numberInt":"23750"},"interest":{"$numberInt":"0"},"cashback":{"$numberInt":"5000"},"_id":{"$oid":"6916d089a2ee4e0ba2a6a09e"}},{"tenure":{"$numberInt":"12"},"monthlyPayment":{"$numberInt":"11875"},"interest":{"$numberInt":"0"},"cashback":{"$numberInt":"5000"},"_id":{"$oid":"6916d089a2ee4e0ba2a6a09f"}},{"tenure":{"$numberInt":"24"},"monthlyPayment":{"$numberInt":"6200"},"interest":{"$numberDouble":"5.5"},"cashback":{"$numberInt":"5000"},"_id":{"$oid":"6916d089a2ee4e0ba2a6a0a0"}}],"__v":{"$numberInt":"0"},"createdAt":{"$date":{"$numberLong":"1763102857776"}},"updatedAt":{"$date":{"$numberLong":"1763102857776"}}}"
+<img width="850" height="392" alt="image" src="https://github.com/user-attachments/assets/c3f06de2-14d2-47bf-b4de-26df88153c07" />
+
 
 ## Database Schema:  
 <img width="576" height="582" alt="image" src="https://github.com/user-attachments/assets/46a33466-58f8-40fd-bb2e-3e27d49b009f" />
